@@ -1,0 +1,50 @@
+# Example program: Scale a matrix and compute row sums
+# Demonstrates: function, parameters, list, matrix, loops
+
+def scale_and_sum_rows(matrix, scale_factor):
+    """
+    Takes a matrix (list of lists) and a scale factor.
+    Returns:
+      - a new matrix where each element is multiplied by the scale factor
+      - a list containing the sum of each row of the original matrix
+    """
+    scaled_matrix = []      # will hold the new matrix (list of lists)
+    row_sums = []           # simple list to store row sums
+
+    # Outer loop: iterate over each row in the matrix
+    for row in matrix:
+        row_sum = 0
+        new_row = []
+        # Inner loop: iterate over each element in the current row
+        for element in row:
+            row_sum += element
+            new_row.append(element * scale_factor)
+        scaled_matrix.append(new_row)
+        row_sums.append(row_sum)
+
+    return scaled_matrix, row_sums
+
+
+# Define a matrix (2D list)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Define a scale factor
+factor = 2
+
+# Call the function with parameters
+scaled, sums = scale_and_sum_rows(matrix, factor)
+
+# Display results
+print("Original matrix:")
+for row in matrix:
+    print(row)
+
+print("\nScaled matrix (each element multiplied by", factor, "):")
+for row in scaled:
+    print(row)
+
+print("\nRow sums of original matrix:", sums)
